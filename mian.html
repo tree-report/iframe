@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="CN-zh">
+  <head>
+    <link type="shortcut icon" herf="">
+    <meta charset="utf-8">
+    <title>iframe访问器</title>
+  </head>
+  <body>
+    <!-- 最抽象的一集 -->
+    <iframe id="website" src=""></iframe>
+    <div id="optionsBar">
+      <input id="inputString" type="text" size="50">
+      <div id="submit">
+        <p>确定</p>
+      </div>
+    </div>
+  </body>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      padding: 8px;
+    }
+    iframe{
+      height: 95vh;
+      width: 99vw;
+    }
+    #submit{
+      position: absolute;
+      height: 1.5rem;
+      width: 3rem;
+      right: 0;
+      text-align: center;
+      background-color: #b5ddfa;
+      border: 2px #6cbef9 solid;
+      border-radius: 8px;
+      box-shadow: 0px 2px 5px #909090;
+    }
+    #inputString{
+      position: absolute;
+      height: 1.5rem;
+      width: 97vw;
+      left: 0;
+      background-color: #ddf0fd;
+      border: 2px #6cbef9 solid;
+      border-radius: 8px;
+      box-shadow: 0px 2px 5px #909090;
+    }
+  </style>
+  <script>
+    let frame = document.getElementById("website");
+    let input = document.getElementById("inputString");
+    let submit = document.getElementById("submit");
+    submit.addEventListener("mousedown", function(event){
+      if(input.value == ""){
+        alert("字符串为空!");
+        console.error("字符串为空");
+      }
+      else{
+        frame.src = "https://" + input.value;
+        console.log("成功切换网页: " + input.value);
+      }
+    });
+  </script>
+</html>
